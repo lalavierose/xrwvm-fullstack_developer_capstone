@@ -29,11 +29,14 @@ SECRET_KEY = \
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost', 
-    'https://halazidan02-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+    'localhost',
+    'https://halazidan02-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.'
+    'proxy.cognitiveclass.ai'
 ]
+
 CSRF_TRUSTED_ORIGINS = [
-    'https://halazidan02-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai'
+    'https://halazidan02-8000.theiadockernext-0-labs-prod-theiak8s-4-tor01.'
+    'proxy.cognitiveclass.ai'
 ]
 
 REST_FRAMEWORK = {
@@ -99,18 +102,23 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+                'NumericPasswordValidator',
     },
 ]
+
 
 
 # Internationalization
