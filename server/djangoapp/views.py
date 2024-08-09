@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 
+
 # Create a `login_request` view to handle sign in request
 @csrf_exempt
 def login_user(request):
@@ -29,10 +30,12 @@ def login_user(request):
         response_data = {"userName": username, "status": "Authenticated"}
     return JsonResponse(response_data)
 
+
 # Create a `logout_request` view to handle sign out request
 def logout_request(request):
     logout(request)
     return JsonResponse({"userName": ""})
+
 
 # Create a `registration` view to handle sign up request
 @csrf_exempt
@@ -43,7 +46,7 @@ def registration(request):
     first_name = data['firstName']
     last_name = data['lastName']
     email = data['email']
-    
+
     username_exist = False
     try:
         # Check if user already exists
@@ -69,25 +72,29 @@ def registration(request):
         
     return JsonResponse(response_data)
 
+
 # Update the `get_dealerships` to render list of dealerships
 def get_dealerships(request, state="All"):
     if state == "All":
         endpoint = "/fetchDealers"
     else:
         endpoint = f"/fetchDealers/{state}"
-        
+    
     dealerships = get_request(endpoint)
     return JsonResponse({"status": 200, "dealers": dealerships})
+
 
 def get_dealer_reviews(request, dealer_id):
     if dealer_id:
         endpoint = f"/fetchReviews/dealer/{dealer_id}"
         reviews = get_request(endpoint)
         for review_detail in reviews:
-            sentiment_response = analyze_review_sentiments(review_detail['review'])
+            sentiment_response = analyze_review_sentiments(
+                review_detail['review'])
             review_detail['sentiment'] = sentiment_response['sentiment']
         return JsonResponse({"status": 200, "reviews": reviews})
     return JsonResponse({"status": 400, "message": "Bad Request"})
+
 
 def get_dealer_details(request, dealer_id):
     if dealer_id:
@@ -95,6 +102,7 @@ def get_dealer_details(request, dealer_id):
         dealership = get_request(endpoint)
         return JsonResponse({"status": 200, "dealer": dealership})
     return JsonResponse({"status": 400, "message": "Bad Request"})
+
 
 # Create an `add_review` view to submit a review
 def add_review(request):
@@ -114,6 +122,7 @@ def add_review(request):
         "status": 403,
         "message": "Unauthorized"
     })
+
 
 # Method to get cars
 def get_cars(request):
