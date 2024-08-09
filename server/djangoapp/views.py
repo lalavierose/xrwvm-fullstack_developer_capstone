@@ -69,7 +69,7 @@ def registration(request):
         response_data = {"userName": username, "status": "Authenticated"}
     else:
         response_data = {"userName": username, "error": "Already Registered"}
-        
+   
     return JsonResponse(response_data)
 
 
@@ -79,7 +79,7 @@ def get_dealerships(request, state="All"):
         endpoint = "/fetchDealers"
     else:
         endpoint = f"/fetchDealers/{state}"
-    
+
     dealerships = get_request(endpoint)
     return JsonResponse({"status": 200, "dealers": dealerships})
 
